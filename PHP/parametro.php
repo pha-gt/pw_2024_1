@@ -1,0 +1,1 @@
+Hola <?php echo $_GET["nombre_atr"]?>
