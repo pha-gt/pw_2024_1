@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,8 @@
             let indice=0;
             lista.forEach(cancion => {
                 codigo_html_botones=codigo_html_botones+
-                "<button class='btn btn-primary' type='button' onclick='mostrar_cancion("+indice+");'' >"+cancion.titulo+"</button><br>";
+                "<li class='list-group-item' id='li_cancion_"+indice+"' onclick='mostrar_cancion("+indice+");'>"+cancion.titulo+"</li>";
+                //"<button class='btn btn-primary' type='button' onclick='mostrar_cancion("+indice+");'' >"+cancion.titulo+"</button><br>";
                 indice++;
             });
             //alert(codigo_html_botones);
@@ -62,6 +63,27 @@
             espacio_artista.innerHTML= lista[indice].artista;
             let espacio_duracion = document.getElementById('duracion_cancion');
             espacio_duracion.innerHTML= lista[indice].duracion;
+
+            //desmarcar canciones y cambiar el seleccionado
+            for(let i=0;i<lista.length;i++)
+            {
+                let lu =  document.getElementById('li_cancion_'+i);
+                lu.classList.remove("active");
+
+            }
+            let lu =  document.getElementById('li_cancion_'+indice);
+            lu.classList.add("active");
+
+        }
+
+        function tocar_rueda(e){
+            let x=e.clientX;
+    		let y=e.clientY;
+            alert("tocado x:"+x+" y:"+y);
+
+            if(x>137 && x<218 && y>244 && y<267) cargar_canciones();
+
+            
         }
 
 
@@ -69,32 +91,36 @@
 
 </head>
 <body>
-    <div class="row">
+    <div class="row me-3">
+        
         <div class="col-9">
             <div class="card m-2 p-3 " style="width: 22rem; background-color:gray;">
                 <div class="card m-2" style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title" id="titulo_cancion">Algo</h5>
-                        <p class="card-text" id="artista_cancion">Algo</p>
+                        <h5 class="card-title" id="titulo_cancion">&nbsp;</h5>
+                        <p class="card-text" id="artista_cancion">&nbsp;</p>
                         <p class="card-text" id="duracion_cancion">Duracion:</p>
                     </div>
                     <audio src="./melodia3.mp3" controls  type="audio/mpeg" style="width:90%; margin:auto;"></audio>
                 </div>
                    
                
-                    <img src='ipod_wheel.svg' style='width:80%; margin:auto;' >
+                    <img src='ipod_wheel.svg' onclick="tocar_rueda(event);" style='width:80%; margin:auto;' >
             </div>
 
         </div>
-        <button type="button" onclick="cargar_canciones();" >CARGAR</button>
-        
-            <div class="d-grid gap-0" id="espacio_lista">
-
-            </div>
-
-
+        <div class="col-3">
+            <!--
+            <button type="button" onclick="cargar_canciones();" >CARGAR</button>
+            -->
+            <br><a href="">Blanco</a>
+            <ul class="list-group " id="espacio_lista">
+               
+            </ul>
+            
+        </div>
+       
     </div>
-
     
 </body>
 </html>

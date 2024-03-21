@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<div class="row">
+<div class="row me-3">
 
 
     <div class="col-9">
@@ -110,27 +110,18 @@
 
     <div class="col-3 ">
         <br><a href="./ipod.php">Blanco</a>
-        <ul class="list-group mx-3">
+        <ul class="list-group">
         <?php
             for($i = 0;$i<count($lista_canciones);$i++)
             {
                 echo "<li class='list-group-item text-white ".($c==$i+1?"active":"")."'><a  style='text-decoration: none;' ".($c==$i+1?"class='text-white'":"")." href='./ipod.php?c=".($i+1)."'>".$lista_canciones[$i]->titulo."</a></li>";
-                //echo "<br><a href='./ipod.php?c=".($i+1)."'>".$lista_canciones[$i]->titulo."</a>";
             }
 
 
         
         ?>
 
-        <!--
-        </ul>
-        <ul class="list-group mx-3" style="font-weight: bold;">
-            <li class="list-group-item <?php echo "Hola mundo" ?> "> An active item</li>
-            <li class="list-group-item <?php echo ($c==2?" active ":""); ?> "> A second item</li>
-            <li class="list-group-item ">A third item</li>
-            <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-        -->
+
     
 
     </div>

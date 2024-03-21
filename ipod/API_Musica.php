@@ -16,8 +16,7 @@ require "Melodia.php";
 
     $cadena = json_encode($lista_canciones); //Convierte la cadena de tipo PHP en una de tipo JSON
     echo $cadena;
-
-
+    
 
 
 ?>
